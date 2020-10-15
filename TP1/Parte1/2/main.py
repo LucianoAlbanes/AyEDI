@@ -1,15 +1,12 @@
 from algo1 import *
 
 # Ask lenght of each inputVector and declare them
-dim1 = input_int('Ingrese la dimensión del primer vector: ')
-dim2 = input_int('Ingrese la dimensión del segundo vector: ')
+inputVector1 = Array(
+    input_int('Ingrese la dimensión del primer vector: '), 0.0)
+inputVector2 = Array(
+    input_int('Ingrese la dimensión del segundo vector: '), 0.0)
 
-inputVector1 = Array(dim1, 0.0)
-inputVector2 = Array(dim2, 0.0)
- 
 # Declare function for filling vector
-
-
 def pedirValores(vector):
     for i in range(0, len(vector)):
         print('Posición actual (', i+1, '/', len(vector), ')')
@@ -23,7 +20,7 @@ print('INGRESANDO LOS VALORES DEL SEGUNDO VECTOR')
 pedirValores(inputVector2)
 
 # Check if dimensions are the same
-if dim1 != dim2:
+if len(inputVector1) != len(inputVector2):
     print('ERROR: Las dimensiones no son iguales, por lo que no se podrá continuar.')
     dimCheck = int(0)
 else:
