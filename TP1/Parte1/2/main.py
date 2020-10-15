@@ -1,0 +1,48 @@
+from algo1 import *
+
+# Ask lenght of each inputVector and declare them
+dim1 = input_int('Ingrese la dimensión del primer vector: ')
+dim2 = input_int('Ingrese la dimensión del segundo vector: ')
+
+inputVector1 = Array(dim1, 0.0)
+inputVector2 = Array(dim2, 0.0)
+ 
+# Declare function for filling vector
+
+
+def pedirValores(vector):
+    for i in range(0, len(vector)):
+        print('Posición actual (', i+1, '/', len(vector), ')')
+        vector[i] = input_real('Ingrese el valor: ')
+
+
+# Ask for the element´s values of each vector
+print('INGRESANDO LOS VALORES DEL PRIMER VECTOR')
+pedirValores(inputVector1)
+print('INGRESANDO LOS VALORES DEL SEGUNDO VECTOR')
+pedirValores(inputVector2)
+
+# Check if dimensions are the same
+if dim1 != dim2:
+    print('ERROR: Las dimensiones no son iguales, por lo que no se podrá continuar.')
+    dimCheck = int(0)
+else:
+    dimCheck = int(1)
+
+# Declare sumVector and calc the sum
+if dimCheck:
+    sumVector = Array(len(inputVector1), 0.0)
+    for i in range(0, len(sumVector)):
+        sumVector[i] = inputVector1[i] + inputVector2[i]
+
+# Declare and calc the norm
+if dimCheck:
+    summatory = float(0)
+    for i in range(0, len(sumVector)):
+        summatory += sumVector[i]**2
+    norm = summatory**0.5  # sqrt equivalent
+
+# Output results
+if dimCheck:
+    print('Vector suma: ', sumVector)
+    print('Norma: ', norm)
