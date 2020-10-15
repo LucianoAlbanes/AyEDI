@@ -9,8 +9,9 @@ inputVector2 = Array(
 # Declare function for filling vector
 def pedirValores(vector):
     for i in range(0, len(vector)):
-        print('Posición actual (', i+1, '/', len(vector), ')')
-        vector[i] = input_real('Ingrese el valor: ')
+        vector[i] = input_real(
+            '(' + str(i+1) + '/' + str(len(vector)) + ') = '
+        )
 
 
 # Ask for the element´s values of each vector
@@ -39,7 +40,7 @@ if dimCheck:
         summatory += sumVector[i]**2
     norm = summatory**0.5  # sqrt equivalent
 
-# Output results
+# Show results
 if dimCheck:
     print('Vector suma: ', sumVector)
     print('Norma: ', norm)
