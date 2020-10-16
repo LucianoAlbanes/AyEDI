@@ -9,10 +9,7 @@ inputVector2 = Array(
 # Declare function for filling vector
 def pedirValores(vector):
     for i in range(0, len(vector)):
-        vector[i] = input_real(
-            '(' + str(i+1) + '/' + str(len(vector)) + ') = '
-        )
-
+        vector[i] = input_real(f'({i+1}/{len(vector)}) = ')
 
 # Ask for the element´s values of each vector
 print('INGRESANDO LOS VALORES DEL PRIMER VECTOR')
@@ -42,5 +39,5 @@ if dimCheck:
 
 # Show results
 if dimCheck:
-    print('Vector suma: ', sumVector)
-    print('Norma: ', norm)
+    print(f'Vector suma: {sumVector}')
+    print(f'Norma: {norm}')

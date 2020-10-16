@@ -6,8 +6,7 @@ numbers = Array(lenght, 0)
 
 # Ask element's values
 for i in range(0, lenght):
-    print('Posición actual (', i+1, '/', lenght, ')')
-    numbers[i] = input_int('Ingrese el valor: ')
+    numbers[i] = input_int(f'Ingrese el valor ({i+1}/{lenght}) = ')
     
 # Find biggest absolute number
 biggestAbsNumPosition = int(0)
@@ -19,5 +18,5 @@ for i in range(0, lenght):
         biggestAbsNumPosition = i
     
 # Output phrase
-print('El elemento con mayor valor absoluto ingresado previamente es:', numbers[biggestAbsNumPosition])
+print(f'El elemento con mayor valor absoluto ingresado previamente es: {numbers[biggestAbsNumPosition]}')
 
