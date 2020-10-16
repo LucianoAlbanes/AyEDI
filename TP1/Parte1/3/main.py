@@ -21,12 +21,12 @@ print('--LLENANDO VECTOR--')
 for i in range(0, len(inputVector)):
     inputVector[i] = input_real('(' + str(i+1) + ') = ')
 
-# Check if can multiply (matrix´s m should be equal to vector´s n)
+# Check if can multiply (matrix's m should be equal to vector's n)
 if len(inputMatrix[0]) != len(inputVector):
     print('ERROR: Dimensiones incorrectas.')
 else:
     # Create a new resultVector and initialize it
-    resultVector = Array(len(inputMatrix), 0.0)  # (n = matrix´s n)
+    resultVector = Array(len(inputMatrix), 0.0)  # (n = matrix's n)
     for i in range(0, len(resultVector)):
         resultVector[i] = 0.0
 
