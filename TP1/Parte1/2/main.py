@@ -1,6 +1,6 @@
 from algo1 import *
 
-# Ask lenght of each inputVector and declare them
+# Ask length of each inputVector and declare them
 inputVector1 = Array(
     input_int('Ingrese la dimensión del primer vector: '), 0.0)
 inputVector2 = Array(

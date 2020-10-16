@@ -1,6 +1,6 @@
 from algo1 import *
 
-# Ask lenght of inupt matrix and vector, and declare them
+# Ask length of inupt matrix and vector, and declare them
 inputMatrix = Array(
     input_int('Ingrese la dimensión (n) de la matriz: '), Array(
         input_int('Ingrese la dimensión (m) de la matriz: '), 0.0))

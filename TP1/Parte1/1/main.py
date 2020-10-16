@@ -1,6 +1,6 @@
 from algo1 import *
 
-# Ask lenght and declare vector (numbers)
+# Ask length and declare vector (numbers)
 lenght = input_int('Ingrese la cantidad de elementos a analizar: ')
 numbers = Array(lenght, 0)
 
