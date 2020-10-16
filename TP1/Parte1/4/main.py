@@ -1,17 +1,18 @@
 from algo1 import *
 
 # Ask length of the matrices and declare them
-n = input_int('Ingrese la dimensión (n) de las matrices: ')
-m = input_int('Ingrese la dimensión (m) de las matrices: ')
-minuendMatrix = Array(n, Array(m, 0.0))
+minuendMatrix = Array(
+    input_int('Ingrese la dimensión (n) de las matrices: '), Array(
+        input_int('Ingrese la dimensión (m) de las matrices: '), 0.0))
+
 subtrahendMatrix = Array(len(minuendMatrix), Array(len(minuendMatrix[0]), 0.0))
 
 # Define a function to fill matrices
 def fillMatrix(matrix):
     for i in range(len(matrix)):
         for j in range(len(matrix[i])):
-            matrix[i][j] = input_real(
-                '(' + str(i+1) + ',' + str(j+1) + ') = ')
+            matrix[i][j] = input_real(f'({i+1}/{j+1}) = ')
+
 
 # Fill matrices
 print('--LLENANDO MATRIZ MINUENDO--')
