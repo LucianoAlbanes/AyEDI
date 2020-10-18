@@ -5,7 +5,7 @@ minuendMatrix = Array(
     input_int('Ingrese la dimensión (n) de las matrices: '), Array(
         input_int('Ingrese la dimensión (m) de las matrices: '), 0.0))
 
-subtrahendMatrix = Array(len(minuendMatrix), Array(len(minuendMatrix[0]), 0.0))
+subtrahendMatrix = copy.deepcopy(minuendMatrix) # Copy is part of algo1 ¯\_(ツ)_/¯
 
 # Define a function to fill matrices
 def fillMatrix(matrix):
