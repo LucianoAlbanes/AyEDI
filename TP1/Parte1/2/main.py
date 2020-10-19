@@ -7,15 +7,15 @@ inputVector2 = Array(
     input_int('Ingrese la dimensión del segundo vector: '), 0.0)
 
 # Declare function for filling vector
-def pedirValores(vector):
+def askForValues(vector):
     for i in range(0, len(vector)):
         vector[i] = input_real(f'({i+1}/{len(vector)}) = ')
 
 # Ask for the element´s values of each vector
 print('INGRESANDO LOS VALORES DEL PRIMER VECTOR')
-pedirValores(inputVector1)
+askForValues(inputVector1)
 print('INGRESANDO LOS VALORES DEL SEGUNDO VECTOR')
-pedirValores(inputVector2)
+askForValues(inputVector2)
 
 # Check if dimensions are the same
 if len(inputVector1) != len(inputVector2):
