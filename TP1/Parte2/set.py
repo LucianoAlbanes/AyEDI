@@ -1,4 +1,4 @@
-# Return a TAD set and remove duplicates
+# Return a ADT set and remove duplicates
 def Create_Set(Array):
     outputArray = []
     for element in Array:
@@ -11,8 +11,8 @@ def Union(ArrayS, ArrayT):
     if (check_duplicates(ArrayS) or check_duplicates(ArrayT)):
         print('ERROR: Alguno de los arrays ingresados posee elementos duplicados.')
     else:
-        outputArray = ArrayS + ArrayT
-        return Create_Set(outputArray)
+        outputArray = Create_Set(ArrayS + ArrayT) #Remove duplicates 
+        return outputArray
 
 # Return the intersection between two arrays, iff the arrays not contain duplicated elements
 def Intersection(ArrayS, ArrayT):
@@ -23,7 +23,7 @@ def Intersection(ArrayS, ArrayT):
         for element in ArrayS:
             if element in ArrayT:
                 outputArray.append(element)
-        return Create_Set(outputArray)
+        return outputArray
 
 # Return the difference between two arrays, iff the arrays not contain duplicated elements
 def Difference(ArrayS, ArrayT):
@@ -34,7 +34,7 @@ def Difference(ArrayS, ArrayT):
         for element in ArrayS:
             if element not in ArrayT:
                 outputArray.append(element)
-        return Create_Set(outputArray)
+        return outputArray
 
 # Check if exist any duplicate element is the array, return a boolean value
 def check_duplicates(Array):
