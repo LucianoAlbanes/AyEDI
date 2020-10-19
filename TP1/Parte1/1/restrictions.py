@@ -5,9 +5,4 @@
 def abs(number):
     if number < 0: return number*-1
     else: return number
-
-# For each (Aka 'for value in array:')
-def forEach(array, actualIterator):
-    for i in range(0, len(array)):
-        actualIterator = i
-        return array[i]
+    

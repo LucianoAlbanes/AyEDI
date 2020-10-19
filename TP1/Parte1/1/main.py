@@ -1,22 +1,23 @@
 from algo1 import *
+import restrictions
 
 # Ask length and declare vector (numbers)
-lenght = input_int('Ingrese la cantidad de elementos a analizar: ')
-numbers = Array(lenght, 0)
+length = int(0)
+while (length < 1):
+    length = input_int('Ingrese la cantidad de elementos a analizar: ')
+numbers = Array(length, 0)
 
 # Ask element's values
-for i in range(0, lenght):
-    numbers[i] = input_int(f'Ingrese el valor ({i+1}/{lenght}) = ')
+for i in range(0, length):
+    numbers[i] = input_int(f'Ingrese el valor ({i+1}/{length}) = ')
     
 # Find biggest absolute number
-biggestAbsNumPosition = int(0)
-for i in range(0, lenght):
-    actualAbsNum = abs(numbers[i])
-    biggestAbsNum = abs(numbers[biggestAbsNumPosition])
-    
+biggestAbsNum = int(0)
+for i in range(0, length):
+    actualAbsNum = restrictions.abs(numbers[i])
+    biggestAbsNum = restrictions.abs(biggestAbsNum)  
     if actualAbsNum > biggestAbsNum:
-        biggestAbsNumPosition = i
+        biggestAbsNum = numbers[i]
     
 # Output phrase
-print(f'El elemento con mayor valor absoluto ingresado previamente es: {numbers[biggestAbsNumPosition]}')
-
+print(f'El elemento con mayor valor absoluto ingresado previamente es: {biggestAbsNum}')
