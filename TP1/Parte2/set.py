@@ -13,24 +13,22 @@ def Create_Set(Array):
             outputArray.append(Array[i])
     return outputArray
 
-# Return the union between two arrays, iff the arrays not contain duplicated elements
+# Return the union between two arrays
 def Union(ArrayS, ArrayT):
-    # Overwrite the input array without duplicates
-    if not check_duplicates(ArrayS):
-        check_duplicates(ArrayT)
-    ArrayS = Create_Set(ArrayS)
-    ArrayT = Create_Set(ArrayT)
+    # Verify Conditions
+    preConditions(ArrayS, ArrayT)
+    
+    # Do the union, if the result array have duplicates, remove them
+    outputArray = ArrayS + ArrayT
+    if check_duplicates(outputArray):
+        outputArray = Create_Set(outputArray)
+    return outputArray
 
-    return Create_Set(ArrayS + ArrayT)  # Remove duplicates
-
-# Return the intersection between two arrays, iff the arrays not contain duplicated elements
+# Return the intersection between two arrays
 def Intersection(ArrayS, ArrayT):
-    # Overwrite the input array without duplicates
-    if not check_duplicates(ArrayS):
-        check_duplicates(ArrayT)
-    ArrayS = Create_Set(ArrayS)
-    ArrayT = Create_Set(ArrayT)
-
+    # Verify Conditions
+    preConditions(ArrayS, ArrayT)
+    
     # Create an outputArray and store the elements if match
     outputArray = []
     for i in range(0, len(ArrayS)):
@@ -43,13 +41,10 @@ def Intersection(ArrayS, ArrayT):
             outputArray.append(ArrayS[i])
     return outputArray
 
-# Return the difference between two arrays, iff the arrays not contain duplicated elements
+# Return the difference between two arrays
 def Difference(ArrayS, ArrayT):
-    # Overwrite the input array without duplicates
-    if not check_duplicates(ArrayS):
-        check_duplicates(ArrayT)
-    ArrayS = Create_Set(ArrayS)
-    ArrayT = Create_Set(ArrayT)
+    # Verify Conditions
+    preConditions(ArrayS, ArrayT)
 
     # Create an outputArray and store the elements if match
     outputArray = []
@@ -75,6 +70,20 @@ def check_duplicates(Array):
         if not haveDuplicates:
             tempArray.append(Array[i])
         else:
-            print('INFO: Alguno de los arrays ingresados posee elementos duplicados. Fueron eliminados.')
             break
     return haveDuplicates
+
+# Check if two arrays have a duplicate elements, print an info message and overwrite as a set
+def preConditions(ArrayS, ArrayT):
+    # Check if haveDuplicates; if true, remove them
+    haveDuplicates = False
+    if check_duplicates(ArrayS):
+        ArrayS = Create_Set(ArrayS)
+        haveDuplicates = True
+    if check_duplicates(ArrayT):
+        ArrayT = Create_Set(ArrayT)
+        haveDuplicates = True
+        
+    # Print the info message
+    if haveDuplicates:
+        print('INFO: Alguno de los arrays ingresados posee elementos duplicados. Estos fueron eliminados.')

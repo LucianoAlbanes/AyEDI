@@ -10,7 +10,7 @@ def abs(number):
 # Add a element to an array (Aka append()) [type sensitive]
 def append(inputArray, elementToAdd):
     length = len(inputArray)
-    outputArray = Array(length+1, )
+    outputArray = Array(length+1, inputArray[0])
     
     for i in range(0, (length)):
         outputArray[i] = inputArray[i]
