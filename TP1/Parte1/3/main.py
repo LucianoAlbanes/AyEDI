@@ -41,4 +41,5 @@ else:
 
     # Print the multiplication results
     print('El producto de la matriz anterior por el vector es el siguiente:')
-    print(resultVector)
+    for i in range(0, len(resultVector)): # vector is nx1 (column vector)
+        print(f'[{resultVector[i]}]')
