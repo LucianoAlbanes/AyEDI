@@ -75,7 +75,6 @@ def check_duplicates(Array):
         if not haveDuplicates:
             tempArray.append(Array[i])
         else:
-            print(
-                'INFO: Alguno de los arrays ingresados posee elementos duplicados. Fueron eliminados.')
+            print('INFO: Alguno de los arrays ingresados posee elementos duplicados. Fueron eliminados.')
             break
     return haveDuplicates
