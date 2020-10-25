@@ -13,12 +13,12 @@ def search(array, element):
         If the element is found multiple times, returns the first index where appears.
         Returns 'None' if the element is not in the array.
     """
-    locationIndex = None
+    index = None
     for i in range(0, len(array)):
         if array[i] == element:
-            locationIndex = i
+            index = i
             break
-    return locationIndex
+    return index
 
 # Insert an element on an array
 def insert(array, element, position):
@@ -53,7 +53,7 @@ def insert(array, element, position):
     # Return the element position.
     return position
 
-# Insert an element on an array.
+# Delete an element on an array.
 def delete(array, element):
     """
     Explanation:
@@ -72,20 +72,20 @@ def delete(array, element):
     # Store the length of the array.
     length = len(array)
 
-    # Search for location of the element.
-    location = search(array, element)
+    # Search for the index of the element.
+    index = search(array, element)
 
     # Check if none, and end. Otherwise do the deletion.
-    if location == None:
+    if index == None:
         return None
     else:
-        # Move one position up from the location of the element deleted.
-        for i in range(location, length-1):
+        # Move one position up from the index of the element deleted.
+        for i in range(index, length-1):
             array[i] = array[i+1]
         # Assign the last element of the array to 'None'.
         array[length-1] = None
         # Return the index where was located the deleted element.
-        return location
+        return index
 
 # Count the lenght of the array (without empty elements)
 def length(array):
