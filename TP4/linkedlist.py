@@ -64,20 +64,16 @@ def insert(linkedList, element, position):
         The index where was inserted the element.
         Returns 'None' if the given position is out of bounds of the list.
     """
-    # Check if the position is out of bounds.
-    if position > length(linkedList):
+    # Go to the node previous to the given position.
+    previousNode = getNode(linkedList, position-1)
+    
+    # Check if don't exist a previous node (out of bounds).
+    if not previousNode:
         return None
     
     # Create the new node and store the element.
     newNode = Node()
     newNode.value = element
-    
-    # Go to the node previous to the given position.
-    previousNode = linkedList.head
-    actualPosition = 0 
-    while (actualPosition != position-1):
-        previousNode = previousNode.nextNode
-        actualPosition += 1
     
     # Asign new pointers (.nextNode)
     newNode.nextNode = previousNode.nextNode
@@ -106,7 +102,14 @@ def delete(linkedList, element):
     if not position:
         return None
     
-    #
+    # Go to the node previous to the position of the element.
+    previousNode = getNode(linkedList, position-1)
+    
+    # Reasign pointers (.nextNode)
+    previousNode.nextNode = previousNode.nextNode.nextNode
+    
+    # Return the position where was located the deleted element.
+    return position
 
 def length(linkedList):
     """
@@ -132,13 +135,45 @@ def access(linkedList, position):
     Explanation: 
         Access to an element in the given position of the list.
     Params:
-        linkedList: The list on which you want to perform the count.
+        linkedList: The list where is located the element to access.
+        position: The position of the element in the list.
     Return:
-        The number of elements.
+        The value of the element at the given position.
+        Returns 'None' if there is no element for that position.
     """
-
-def getNode(linkedList, position):
+    # Store the node
+    actualNode = getNode(linkedList, position)
     
+    # Case if the position is out of bounds.
+    if not actualNode:
+        return None
+    else: # Return the element
+        return actualNode.value
+    
+def getNode(linkedList, position):
+    """
+    Explanation:
+        Go to the node at the given position.
+    Params:
+        linkedList: The list where is located the node.
+        position: The node's position.
+    Return:
+        The pointer of the node.
+        Returns 'None' if the given position is out of bounds of the list.
+    """
+    # Case if the position is out of bounds.
+    if position > length(linkedList):
+        return None
+    
+    # Go to the node with the given position.
+    actualNode = linkedList.head
+    actualPosition = 0 
+    while (actualPosition != position):
+        actualNode = actualNode.nextNode
+        actualPosition += 1
+    
+    # Return the pointer.
+    return actualNode
 
 
 
@@ -153,13 +188,16 @@ add(Listita, 'I')
 add(Listita, 'C')
 add(Listita, 'U')
 add(Listita, 'L')
-print(length(Listita))
-print(search(Listita, 'A'))
 
-insert(Listita,'X',40)
+print(access(Listita,0))
+
+"""
+print(delete(Listita,'C'))
 
 print('-------')
 print(length(Listita))
-print(search(Listita, 'A'))
+print(search(Listita, 'I'))
 print('---1234123----')
-print(search(Listita, 'X'))
+print(search(Listita, 'U'))
+print(search(Listita, 'C'))
+"""
