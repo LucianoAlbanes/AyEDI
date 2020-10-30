@@ -1,4 +1,4 @@
-## Sequence ADT implementation
+## List - sequence ADT implementation
 
 # Define the needed classes
 class LinkedList:
