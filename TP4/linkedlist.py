@@ -9,6 +9,8 @@ class Node:
     nextNode = None
 
 # Define operations
+
+
 def add(linkedList, element):
     """
     Explanation: 
@@ -20,13 +22,14 @@ def add(linkedList, element):
     # Create the new node and store the element.
     newNode = Node()
     newNode.value = element
-    
+
     # Assign the head node to be the second node, if exists
     if linkedList.head:
         newNode.nextNode = linkedList.head
-    
+
     # Assign the new node as the first node
     linkedList.head = newNode
+
 
 def search(linkedList, element):
     """
@@ -39,18 +42,19 @@ def search(linkedList, element):
         The index where is the element.
         If the element is found multiple times, returns the first index where appears.
         Returns 'None' if the element is not in the list.
-    """ 
+    """
     # Define the head of the linked list as the actualNode
     actualNode = linkedList.head
-    
+
     # Perform the search
-    i = -1 # To start with 0
+    i = -1  # To start with 0
     while actualNode:
         i += 1
         if actualNode.value == element:
             return i
         actualNode = actualNode.nextNode
     return None
+
 
 def insert(linkedList, element, position):
     """
@@ -66,21 +70,22 @@ def insert(linkedList, element, position):
     """
     # Go to the node previous to the given position.
     previousNode = getNode(linkedList, position-1)
-    
+
     # Check if don't exist a previous node (out of bounds).
     if not previousNode:
         return None
-    
+
     # Create the new node and store the element.
     newNode = Node()
     newNode.value = element
-    
+
     # Asign new pointers (.nextNode)
     newNode.nextNode = previousNode.nextNode
     previousNode.nextNode = newNode
-    
+
     # Return the position of the inserted element.
     return position
+
 
 def delete(linkedList, element):
     """
@@ -97,19 +102,20 @@ def delete(linkedList, element):
     """
     # Search and store the position of the element
     position = search(linkedList, element)
-    
+
     # Case if the element was not found.
     if not position:
         return None
-    
+
     # Go to the node previous to the position of the element.
     previousNode = getNode(linkedList, position-1)
-    
+
     # Reasign pointers (.nextNode)
     previousNode.nextNode = previousNode.nextNode.nextNode
-    
+
     # Return the position where was located the deleted element.
     return position
+
 
 def length(linkedList):
     """
@@ -122,13 +128,14 @@ def length(linkedList):
     """
     # Define the head of the linked list as the actualNode
     actualNode = linkedList.head
-    
+
     # Perform the count
     count = 0
     while actualNode:
         count += 1
         actualNode = actualNode.nextNode
     return count
+
 
 def access(linkedList, position):
     """
@@ -143,13 +150,14 @@ def access(linkedList, position):
     """
     # Store the node
     actualNode = getNode(linkedList, position)
-    
+
     # Case if the position is out of bounds.
     if not actualNode:
         return None
-    
+
     # Return the element
     return actualNode.value
+
 
 def update(linkedList, element, position):
     """
@@ -165,14 +173,15 @@ def update(linkedList, element, position):
     """
     # Store the node
     actualNode = getNode(linkedList, position)
-    
+
     # Case if the position is out of bounds.
     if not actualNode:
         return None
-    
+
     # Perform the update
     actualNode.value = element
     return position
+
 
 def getNode(linkedList, position):
     """
@@ -188,13 +197,13 @@ def getNode(linkedList, position):
     # Case if the position is out of bounds.
     if position > length(linkedList):
         return None
-    
+
     # Go to the node with the given position.
     actualNode = linkedList.head
-    actualPosition = 0 
+    actualPosition = 0
     while (actualPosition != position):
         actualNode = actualNode.nextNode
         actualPosition += 1
-    
+
     # Return the pointer.
     return actualNode
