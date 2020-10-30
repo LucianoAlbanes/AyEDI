@@ -38,7 +38,7 @@ def search(linkedList, element):
     Return:
         The index where is the element.
         If the element is found multiple times, returns the first index where appears.
-        Returns 'None' if the element is not in the array.
+        Returns 'None' if the element is not in the list.
     """ 
     # Define the head of the linked list as the actualNode
     actualNode = linkedList.head
@@ -118,7 +118,7 @@ def length(linkedList):
     Params:
         linkedList: The list on which you want to perform the count.
     Return:
-        The number of elements.
+        The number of elements of the list.
     """
     # Define the head of the linked list as the actualNode
     actualNode = linkedList.head
@@ -126,8 +126,8 @@ def length(linkedList):
     # Perform the count
     count = 0
     while actualNode:
-        actualNode = actualNode.nextNode
         count += 1
+        actualNode = actualNode.nextNode
     return count
 
 def access(linkedList, position):
@@ -147,9 +147,33 @@ def access(linkedList, position):
     # Case if the position is out of bounds.
     if not actualNode:
         return None
-    else: # Return the element
-        return actualNode.value
     
+    # Return the element
+    return actualNode.value
+
+def update(linkedList, element, position):
+    """
+    Explanation: 
+        Update the value of an element in a given position of the list.
+    Params:
+        linkedList: The list where is located the element to update.
+        element: The new value of the element to update in the list.
+        position: The position of the element to update in the list.
+    Return:
+        The position where the update was performed.
+        Returns 'None' if there is no element for that position.
+    """
+    # Store the node
+    actualNode = getNode(linkedList, position)
+    
+    # Case if the position is out of bounds.
+    if not actualNode:
+        return None
+    
+    # Perform the update
+    actualNode.value = element
+    return position
+
 def getNode(linkedList, position):
     """
     Explanation:
@@ -174,30 +198,3 @@ def getNode(linkedList, position):
     
     # Return the pointer.
     return actualNode
-
-
-
-
-
-
-Listita = LinkedList()
-add(Listita, 'O')
-add(Listita, 'N')
-add(Listita, 'A')
-add(Listita, 'I')
-add(Listita, 'C')
-add(Listita, 'U')
-add(Listita, 'L')
-
-print(access(Listita,0))
-
-"""
-print(delete(Listita,'C'))
-
-print('-------')
-print(length(Listita))
-print(search(Listita, 'I'))
-print('---1234123----')
-print(search(Listita, 'U'))
-print(search(Listita, 'C'))
-"""
