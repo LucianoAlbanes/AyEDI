@@ -23,9 +23,8 @@ def add(linkedList, element):
     newNode = Node()
     newNode.value = element
 
-    # Assign the head node to be the second node, if exists
-    if linkedList.head:
-        newNode.nextNode = linkedList.head
+    # Assign the head node to be the second node
+    newNode.nextNode = linkedList.head
 
     # Assign the new node as the first node
     linkedList.head = newNode
@@ -68,6 +67,11 @@ def insert(linkedList, element, position):
         The index where was inserted the element.
         Returns 'None' if the given position is out of bounds of the list.
     """
+    # Case if is position is 0
+    if position == 0:
+        add(linkedList, element)
+        return position
+
     # Go to the node previous to the given position.
     previousNode = getNode(linkedList, position-1)
 
@@ -104,14 +108,19 @@ def delete(linkedList, element):
     position = search(linkedList, element)
 
     # Case if the element was not found.
-    if not position:
+    if position == None:
         return None
 
-    # Go to the node previous to the position of the element.
-    previousNode = getNode(linkedList, position-1)
+    # Check if position = 0
+    if position == 0:
+        # Assign the second node as head
+        linkedList.head = linkedList.head.nextNode
+    else:
+        # Go to the node previous to the position of the element.
+        previousNode = getNode(linkedList, position-1)
 
-    # Reasign pointers (.nextNode)
-    previousNode.nextNode = previousNode.nextNode.nextNode
+        # Reasign pointers (.nextNode)
+        previousNode.nextNode = previousNode.nextNode.nextNode
 
     # Return the position where was located the deleted element.
     return position
@@ -195,7 +204,7 @@ def getNode(linkedList, position):
         Returns 'None' if the given position is out of bounds of the list.
     """
     # Case if the position is out of bounds.
-    if position > length(linkedList):
+    if position > length(linkedList) or position < 0:
         return None
 
     # Go to the node with the given position.
