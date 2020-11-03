@@ -67,7 +67,7 @@ def insert(linkedList, element, position):
         The index where was inserted the element.
         Returns 'None' if the given position is out of bounds of the list.
     """
-    # Case if is position is 0
+    # Case if position is 0
     if position == 0:
         add(linkedList, element)
         return position
