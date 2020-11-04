@@ -1,9 +1,10 @@
 # Queue implementation (FIFO)
 # Based on Lists - sequence ADT implementation
 
-from linkedlist import add, length, access, getNode, LinkedList
+from linkedlist import add
 
 # Define operations
+
 
 def enqueue(queue, element):
     """
@@ -15,6 +16,7 @@ def enqueue(queue, element):
     """
     # Add the element to the beginning of the stack. add() equivalent.
     add(queue, element)
+
 
 def dequeue(queue):
     """
@@ -31,22 +33,29 @@ def dequeue(queue):
     # Case if the queue is empty.
     if not queue.head:
         return None
-    
-    # Store the length of the queue and the element to be extracted.
-    lengthOfQueue = length(queue)
-    element = access(queue, lengthOfQueue-1)
-    
+
     # Case if only exists one node
     if not queue.head.nextNode:
+        # Store the element
+        element = queue.head.value
+
+        # Unlink node
         queue.head = None
+
+        # Return element
         return element
-    
+
     # Go to the previous node to the last node in the queue.
-    previousNode = getNode(queue, lengthOfQueue-2)
-    
+    previousNode = queue.head
+
+    while previousNode.nextNode.nextNode:
+        previousNode = previousNode.nextNode
+
+    # Store the element of the last node.
+    element = previousNode.nextNode.value
+
     # Unlink the last node from the queue.
     previousNode.nextNode = None
-    
+
     # Return the element
     return element
-
