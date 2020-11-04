@@ -33,8 +33,8 @@ def dequeue(queue):
         return None
     
     # Store the length of the queue and the element to be extracted.
-    _length = length(Q)
-    element = access(Q, _length-1)
+    lengthOfQueue = length(queue)
+    element = access(queue, lengthOfQueue-1)
     
     # Case if only exists one node
     if not queue.head.nextNode:
@@ -42,10 +42,11 @@ def dequeue(queue):
         return element
     
     # Go to the previous node to the last node in the queue.
-    previousNode = getNode(Q, _length-2)
+    previousNode = getNode(queue, lengthOfQueue-2)
     
     # Unlink the last node from the queue.
     previousNode.nextNode = None
     
     # Return the element
     return element
+
