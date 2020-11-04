@@ -20,7 +20,7 @@ def push(stack, element):
 def pop(stack):
     """
     Explanation: 
-        Extract the first element at the beginning of a stack (sequence ADT).
+        Extract the element at the beginning of a stack (sequence ADT).
     Info:
         The extracted element will be removed from the stack.
     Params:
