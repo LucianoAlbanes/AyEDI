@@ -29,11 +29,12 @@ def pop(stack):
         The extracted element.
         Returns 'None' if the stack is empty.
     """
-    # Store the element if exists, otherwise store 'None'
-    if stack.head:
-        element = stack.head.value
-    else:
-        element = None
+    # Case if stack is empty.
+    if not stack.head:
+        return None
+    
+    # Store the element to be extracted.
+    element = stack.head.value
 
     # Delete the element from the stack.
     delete(stack, element)
