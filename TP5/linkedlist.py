@@ -83,7 +83,7 @@ def insert(linkedList, element, position):
     newNode = Node()
     newNode.value = element
 
-    # Asign new pointers (.nextNode)
+    # Assign new pointers (.nextNode)
     newNode.nextNode = previousNode.nextNode
     previousNode.nextNode = newNode
 
@@ -119,7 +119,7 @@ def delete(linkedList, element):
         # Go to the node previous to the position of the element.
         previousNode = getNode(linkedList, position-1)
 
-        # Reasign pointers (.nextNode)
+        # Reassign pointers (.nextNode)
         previousNode.nextNode = previousNode.nextNode.nextNode
 
     # Return the position where was located the deleted element.
