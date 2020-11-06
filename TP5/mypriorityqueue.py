@@ -53,7 +53,7 @@ def enqueue_priority(queue, element, priority):
     if queue.head.priority >= priority:  # Case lowest priority
         newNode.nextNode = actualNode
         queue.head = newNode
-    elif actualNode.priority >= priority:  # Case with existing priority.
+    elif actualNode.priority >= priority:  # Case with not max priority.
         newNode.nextNode = actualNode
         previousNode.nextNode = newNode
     else:  # Case with new highest priority.
