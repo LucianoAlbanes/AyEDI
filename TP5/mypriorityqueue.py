@@ -22,38 +22,45 @@ def enqueue_priority(queue, element, priority):
         queue: The queue on which you want to add the element.
         element: The element to add.
         priority: The priority of the element.
+    Return:
+        The position in the queue of the added element.
     """
     # Create the new node and store the attributes.
     newNode = PriorityNode()
     newNode.value = element
     newNode.priority = priority
 
-    # Define actualNode
-    actualNode = queue.head
-
-    # Case if the queue is empty.
-    if not actualNode:
-        # Assign newNode as head of the queue
+    # Case if queue is empty.
+    if not queue.head:
         queue.head = newNode
-        # Return with the position 0.
         return 0
 
-    # Iterate the queue until appears an node with the same priority.
+    # Define actualNode as head of the queue.
+    actualNode = queue.head
+
+    # Navigate until find a Node with major priority.
+    previousNode = None  # Will be used if exist a node with same priority.
     position = 0
-    while actualNode.nextNode and actualNode.priority < priority:
-        position =+ 1
+    while priority > actualNode.priority:
+        position += 1
+        if not actualNode.nextNode:
+            break
+        if priority == actualNode.nextNode.priority:
+            previousNode = actualNode
         actualNode = actualNode.nextNode
-    
-    # Case if position is 0 / Assign head of the queue
-    if position == 0 and actualNode.priority > priority:
-        newNode.nextNode = queue.head
+
+    # Assign new pointers (.nextNode)
+    if queue.head.priority >= priority:  # Case lowest priority
+        newNode.nextNode = actualNode
         queue.head = newNode
-    else:
-        if actualNode.nextNode:
-            newNode.nextNode = actualNode.nextNode
+    elif actualNode.priority == priority:  # Case with existing priority.
+        newNode.nextNode = actualNode
+        previousNode.nextNode = newNode
+    else:  # Case with new priority.
+        newNode.nextNode = actualNode.nextNode
         actualNode.nextNode = newNode
-        
-    # Return the position in the queue of the inserted element
+
+    # Return the position.
     return position
 
 
@@ -99,12 +106,16 @@ def dequeue_priority(queue):
     # Return the element
     return element
 
+
 PQ = PriorityQueue()
+enqueue_priority(PQ, 'El Pepe', 2)
+enqueue_priority(PQ, 'El Sabroson', 0)
+enqueue_priority(PQ, 'El Onur', 1)
+enqueue_priority(PQ, 'El Sech', 3)
+enqueue_priority(PQ, 'El Mamahuevaso', 4)
+enqueue_priority(PQ, 'El Culiao', 3)
+enqueue_priority(PQ, 'El Loquito', 2)
+enqueue_priority(PQ, 'El Loquito2', 2)
 
-import math, random
-for i in range(0,10):
-    ran = math.floor(random.random()*10)
-    enqueue_priority(PQ, i, 0)
-
-for i in range(0,11):
+for i in range(0, 7):
     print(dequeue_priority(PQ))
