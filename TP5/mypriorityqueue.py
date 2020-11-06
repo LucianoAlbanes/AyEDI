@@ -45,7 +45,7 @@ def enqueue_priority(queue, element, priority):
         position += 1
         if not actualNode.nextNode:
             break
-        if priority == actualNode.nextNode.priority:
+        if actualNode.nextNode.priority >= priority:
             previousNode = actualNode
         actualNode = actualNode.nextNode
 
@@ -53,10 +53,10 @@ def enqueue_priority(queue, element, priority):
     if queue.head.priority >= priority:  # Case lowest priority
         newNode.nextNode = actualNode
         queue.head = newNode
-    elif actualNode.priority == priority:  # Case with existing priority.
+    elif actualNode.priority >= priority:  # Case with existing priority.
         newNode.nextNode = actualNode
         previousNode.nextNode = newNode
-    else:  # Case with new priority.
+    else:  # Case with new highest priority.
         newNode.nextNode = actualNode.nextNode
         actualNode.nextNode = newNode
 
@@ -110,12 +110,12 @@ def dequeue_priority(queue):
 PQ = PriorityQueue()
 enqueue_priority(PQ, 'El Pepe', 2)
 enqueue_priority(PQ, 'El Sabroson', 0)
-enqueue_priority(PQ, 'El Onur', 1)
+enqueue_priority(PQ, 'El Onur', 5)
 enqueue_priority(PQ, 'El Sech', 3)
 enqueue_priority(PQ, 'El Mamahuevaso', 4)
 enqueue_priority(PQ, 'El Culiao', 3)
 enqueue_priority(PQ, 'El Loquito', 2)
 enqueue_priority(PQ, 'El Loquito2', 2)
 
-for i in range(0, 7):
+for i in range(0, 9):
     print(dequeue_priority(PQ))
