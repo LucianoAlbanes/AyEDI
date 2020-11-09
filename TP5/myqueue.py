@@ -47,7 +47,6 @@ def dequeue(queue):
 
     # Go to the previous node to the last node in the queue.
     previousNode = queue.head
-
     while previousNode.nextNode.nextNode:
         previousNode = previousNode.nextNode
 

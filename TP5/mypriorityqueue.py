@@ -1,10 +1,9 @@
 # Priority Queue implementation (FIFO)
-# Based on Lists - sequence ADT implementation, with priority attribute
+# Based on Lists - sequence ADT implementation
 
 # Define classes
 class PriorityQueue:
     head = None
-
 
 class PriorityNode:
     value = None
@@ -12,7 +11,6 @@ class PriorityNode:
     priority = None
 
 # Define operations
-
 
 def enqueue_priority(queue, element, priority):
     """
@@ -39,14 +37,13 @@ def enqueue_priority(queue, element, priority):
     actualNode = queue.head
 
     # Navigate until find a Node with major priority.
-    previousNode = None  # Will be used if exist a node with same priority.
+    previousNode = None
     position = 0
     while priority > actualNode.priority:
         position += 1
         if not actualNode.nextNode:
             break
-        if actualNode.nextNode.priority >= priority:
-            previousNode = actualNode
+        previousNode = actualNode
         actualNode = actualNode.nextNode
 
     # Assign new pointers (.nextNode)
@@ -93,7 +90,6 @@ def dequeue_priority(queue):
 
     # Go to the previous node to the last node in the queue.
     previousNode = queue.head
-
     while previousNode.nextNode.nextNode:
         previousNode = previousNode.nextNode
 
@@ -105,17 +101,3 @@ def dequeue_priority(queue):
 
     # Return the element
     return element
-
-
-PQ = PriorityQueue()
-enqueue_priority(PQ, 'El Pepe', 2)
-enqueue_priority(PQ, 'El Sabroson', 0)
-enqueue_priority(PQ, 'El Onur', 5)
-enqueue_priority(PQ, 'El Sech', 3)
-enqueue_priority(PQ, 'El Mamahuevaso', 4)
-enqueue_priority(PQ, 'El Culiao', 3)
-enqueue_priority(PQ, 'El Loquito', 2)
-enqueue_priority(PQ, 'El Loquito2', 2)
-
-for i in range(0, 9):
-    print(dequeue_priority(PQ))
