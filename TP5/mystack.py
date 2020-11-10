@@ -1,7 +1,7 @@
 # Stack implementation (LIFO)
 # Based on Lists - sequence ADT implementation
 
-from linkedlist import add, delete
+from linkedlist import add
 
 # Define operations
 
@@ -36,8 +36,8 @@ def pop(stack):
     # Store the element to be extracted.
     element = stack.head.value
 
-    # Delete the element from the stack.
-    delete(stack, element)
+    # Assign the second node as head
+    stack.head = stack.head.nextNode
 
     # Return the element
     return element
