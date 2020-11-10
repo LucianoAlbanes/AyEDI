@@ -21,7 +21,7 @@ def enqueue(queue, element):
 def dequeue(queue):
     """
     Explanation: 
-        Extract the element at the end of a queue (sequence ADT).
+        Extract the first element added to the queue (sequence ADT).
     Info:
         The extracted element will be removed from the queue.
     Params:
