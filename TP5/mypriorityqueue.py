@@ -1,7 +1,7 @@
-# Priority Queue implementation (FIFO)
-# Based on Lists - sequence ADT implementation
+# Priority Queue implementation (FIFO).
+# Based on Lists - sequence ADT implementation.
 
-# Define classes
+# Define classes.
 class PriorityQueue:
     head = None
 
@@ -10,7 +10,7 @@ class PriorityNode:
     nextNode = None
     priority = None
 
-# Define operations
+# Define operations.
 
 def enqueue_priority(queue, element, priority):
     """
@@ -28,14 +28,14 @@ def enqueue_priority(queue, element, priority):
     newNode.value = element
     newNode.priority = priority
 
-    # Assign the head node to be the second node
+    # Assign the head node to be the second node.
     newNode.nextNode = queue.head
 
-    # Assign the new node as the first node
+    # Assign the new node as the first node.
     queue.head = newNode
 
-    # Return the position of the element
-    # Always 0 because the node is stored as head
+    # Return the position of the element.
+    # Always 0 because the node is stored as head.
     return 0
 
 def dequeue_priority(queue):
