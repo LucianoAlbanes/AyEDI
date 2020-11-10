@@ -23,48 +23,25 @@ def enqueue_priority(queue, element, priority):
     Return:
         The position in the queue of the added element.
     """
-    # Create the new node and store the attributes.
+    # Create the new node and store the element.
     newNode = PriorityNode()
     newNode.value = element
     newNode.priority = priority
 
-    # Case if queue is empty.
-    if not queue.head:
-        queue.head = newNode
-        return 0
+    # Assign the head node to be the second node
+    newNode.nextNode = queue.head
 
-    # Define actualNode as head of the queue.
-    actualNode = queue.head
+    # Assign the new node as the first node
+    queue.head = newNode
 
-    # Navigate until find a Node with major priority.
-    previousNode = None
-    position = 0
-    while priority > actualNode.priority:
-        position += 1
-        if not actualNode.nextNode:
-            break
-        previousNode = actualNode
-        actualNode = actualNode.nextNode
-
-    # Assign new pointers (.nextNode)
-    if queue.head.priority >= priority:  # Case lowest priority
-        newNode.nextNode = actualNode
-        queue.head = newNode
-    elif actualNode.priority >= priority:  # Case with not max priority.
-        newNode.nextNode = actualNode
-        previousNode.nextNode = newNode
-    else:  # Case with new highest priority.
-        newNode.nextNode = actualNode.nextNode
-        actualNode.nextNode = newNode
-
-    # Return the position.
-    return position
-
+    # Return the position of the element
+    # Always 0 because the node is stored as head
+    return 0
 
 def dequeue_priority(queue):
     """
     Explanation: 
-        Extract the element at the end of a queue (sequence ADT).
+        Extract the element with the highest priority of a queue (sequence ADT).
     Info:
         The extracted element will be removed from the queue.
     Params:
@@ -77,27 +54,30 @@ def dequeue_priority(queue):
     if not queue.head:
         return None
 
-    # Case if only exists one node
+    # Case if only exists one node.
     if not queue.head.nextNode:
-        # Store the element
+        # Store the element.
         element = queue.head.value
 
-        # Unlink node
+        # Unlink node.
         queue.head = None
 
-        # Return element
+        # Return element.
         return element
+    
+    # Navigate all the nodes of the queue.
+    previousNode = queue.head # Previous to the highest priority node.
+    actualNode = queue.head
+    while actualNode.nextNode: 
+        if actualNode.nextNode.priority >= previousNode.nextNode.priority:
+            previousNode = actualNode
+        actualNode = actualNode.nextNode
 
-    # Go to the previous node to the last node in the queue.
-    previousNode = queue.head
-    while previousNode.nextNode.nextNode:
-        previousNode = previousNode.nextNode
-
-    # Store the element of the last node.
+    # Store the element of the node.
     element = previousNode.nextNode.value
 
-    # Unlink the last node from the queue.
-    previousNode.nextNode = None
+    # Unlink the the node from the queue.
+    previousNode.nextNode = previousNode.nextNode.nextNode
 
-    # Return the element
+    # Return the element.
     return element
