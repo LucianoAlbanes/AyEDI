@@ -11,18 +11,19 @@ def sortLinkedList(linkedList, fromPosition):
         The sorted linked list.
         Returns 'None' if the linked list is empty or the given position is out of bounds.
     '''
+    lengthOfLList = length(linkedList)
+    
+    # Base case
+    if lengthOfLList-1 == fromPosition:
+        return linkedList
+    
     # Empty list case
     if not linkedList.head:
         return None
     
     # Out of bounds case
-    lengthOfLList = length(linkedList)
     if fromPosition >= lengthOfLList:
         return None
-    
-    # Base case
-    if lengthOfLList-1 == fromPosition:
-        return linkedList
 
     # General case
     actualNode = getNode(linkedList, fromPosition)
