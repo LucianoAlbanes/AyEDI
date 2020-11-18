@@ -235,7 +235,7 @@ def moveNode(linkedList, fromPosition, toPosition):
 
     # Case out of bounds
     lengthOfLList = length(linkedList)
-    if fromPosition >= lengthOfLList or toPosition >= lengthOfLList:
+    if fromPosition < 0 or toPosition < 0 or fromPosition >= lengthOfLList or toPosition >= lengthOfLList:
         return None
 
     # From Position Node Part

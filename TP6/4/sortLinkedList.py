@@ -50,7 +50,7 @@ import random  # Only for testing
 print('Generando una lista con 10 valores aleatorios...')
 
 listOfNumbers = LinkedList()
-for i in range(0, 10):
+for _ in range(0, 10):
     add(listOfNumbers, random.randint(0, 10))
 
 # Print unsorted list
