@@ -5,6 +5,10 @@ def bubbleSort(linkedList):
     if not linkedList.head:
         return None
     
+    # Case only one node
+    if not linkedList.head.nextNode:
+        return 1
+    
     # Define useful variables
     lengthOfLList = length(linkedList)
     lap = 0
@@ -33,3 +37,4 @@ def bubbleSort(linkedList):
             actualNode = actualNode.nextNode
             position += 1
         lap += 1
+    return 1

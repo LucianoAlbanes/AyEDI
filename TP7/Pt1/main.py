@@ -3,7 +3,7 @@
 from linkedlist import add, access, LinkedList, length
 from bubbleSort import bubbleSort
 from selectionSort import selectionSort
-from insertionSort import insertionSort
+'''from insertionSort import insertionSort'''
 import random  # Only for testing
 
 def printList(linkedList):
@@ -36,6 +36,5 @@ def testSort(sorterFn):
     printList(listOfNumbers)
 
 ## TESTS
-testSort(bubbleSort)
 testSort(selectionSort)
-testSort(insertionSort)
+testSort(bubbleSort)
