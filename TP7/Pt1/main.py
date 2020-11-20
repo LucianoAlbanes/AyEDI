@@ -38,3 +38,5 @@ def testSort(sorterFn):
 ## TESTS
 testSort(selectionSort)
 testSort(bubbleSort)
+'''
+testSort(insertionSort)'''

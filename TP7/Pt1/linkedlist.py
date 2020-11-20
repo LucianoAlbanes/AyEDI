@@ -235,7 +235,8 @@ def moveNode(linkedList, fromPosition, toPosition):
 
     # Case out of bounds
     lengthOfLList = length(linkedList)
-    if fromPosition < 0 or toPosition < 0 or fromPosition >= lengthOfLList or toPosition >= lengthOfLList:
+    if (fromPosition < 0 or toPosition < 0
+        or fromPosition >= lengthOfLList or toPosition >= lengthOfLList):
         return None
 
     # From Position Node Part
@@ -263,3 +264,59 @@ def moveNode(linkedList, fromPosition, toPosition):
 
     # Return the position of the movedNode
     return toPosition
+
+def swapNodes(linkedList, firstNodePosition, secondNodePosition):
+    """
+    Explanation:
+        Swap the position of two nodes of a Linked List.
+    Params:
+        linkedList: The list where is located the node.
+        firstNodePosition: The position of the first node to swap.
+        secondNodePosition: The position of the second node to swap.
+    Return:
+        '1' if the swap was successful.
+        Retruns 'None' if the list is empty, or given positions are out of bounds.
+    """
+    # Case empty list
+    if not linkedList.head:
+        return None
+
+    # Case same from and to positions
+    if firstNodePosition == secondNodePosition:
+        return 1
+
+    # Case out of bounds
+    lengthOfLList = length(linkedList)
+    if (firstNodePosition < 0 or secondNodePosition < 0 or firstNodePosition >= lengthOfLList
+        or secondNodePosition >= lengthOfLList):
+        return None
+
+    prevFirstNode = getNode(linkedList, firstNodePosition-1)
+    prevSecondNode = getNode(linkedList, secondNodePosition-1)
+    if not prevFirstNode:
+        firstNode = linkedList.head
+        secondNode = prevSecondNode.nextNode
+    else:
+        firstNode = prevFirstNode.nextNode
+        if not prevSecondNode:
+            secondNode = linkedList.head
+        else:
+            secondNode = prevSecondNode.nextNode
+
+    if firstNode and secondNode:
+        # Swap prevNodes or head
+        if prevFirstNode:
+            prevFirstNode.nextNode = secondNode
+        else:
+            linkedList.head = secondNode
+
+        if prevSecondNode:
+            prevSecondNode.nextNode = firstNode
+        else:
+            linkedList.head = firstNode
+
+        # Swap nextNodes
+        tempNode = firstNode.nextNode
+        firstNode.nextNode = secondNode.nextNode
+        secondNode.nextNode = tempNode
+    return 1

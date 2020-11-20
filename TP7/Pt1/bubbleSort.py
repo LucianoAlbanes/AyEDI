@@ -1,4 +1,4 @@
-from linkedlist import length, getNode, moveNode
+from linkedlist import length, moveNode
 
 def bubbleSort(linkedList):
     # Case empty list
