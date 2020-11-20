@@ -36,7 +36,6 @@ def testSort(sorterFn):
     printList(listOfNumbers)
 
 ## TESTS
-'''testSort(selectionSort)
 testSort(bubbleSort)
-'''
+testSort(selectionSort)
 testSort(insertionSort)
