@@ -1,6 +1,15 @@
 from linkedlist import length, moveNode
 
 def bubbleSort(linkedList):
+    '''
+    Explanation:
+        Sort a linked list using bubble sort algorithm, in increasing order.
+    Params:
+        linkedList: The list to sort.
+    Return:
+        '1' if the sort was successful.
+        Retruns 'None' if the list is empty.
+    '''
     # Case empty list
     if not linkedList.head:
         return None

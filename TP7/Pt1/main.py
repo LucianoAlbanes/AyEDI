@@ -17,7 +17,7 @@ def printList(linkedList):
 def testSort(sorterFn):
     # Print current sort method
     print(f'\n~~~ {sorterFn.__name__} ~~~')
-    
+
     # Create and fill the list
     print('Generando una lista con 10 valores aleatorios...')
 
@@ -35,7 +35,7 @@ def testSort(sorterFn):
     # Print sorted list
     printList(listOfNumbers)
 
-## TESTS
+# TESTS
 testSort(bubbleSort)
 testSort(selectionSort)
 testSort(insertionSort)
