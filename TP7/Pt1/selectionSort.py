@@ -1,6 +1,5 @@
 from linkedlist import getNode, swapNodes
 
-
 def selectionSort(linkedList):
     '''
     Explanation:

@@ -1,4 +1,4 @@
-from linkedlist import length, moveNode, getNode
+from linkedlist import moveNode
 
 def insertionSort(linkedList):
     '''
