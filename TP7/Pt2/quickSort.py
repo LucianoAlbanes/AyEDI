@@ -1,8 +1,16 @@
-from linkedlist import length, getNode, swapNodes, moveNode
-from linkedlist import LinkedList, add, access  # TESTING
+from linkedlist import length, getNode, swapNodes
 
 
 def quickSort(linkedList):
+    '''
+    Explanation:
+        Sort a linked list using quick sort algorithm, in increasing order.
+    Params:
+        linkedList: The list to sort.
+    Return:
+        '1' if the sort was successful.
+        Retruns 'None' if the list is empty.
+    '''
     # Case empty list
     if not linkedList.head:
         return None
@@ -14,6 +22,7 @@ def quickSort(linkedList):
     # Store length and call aux function
     lengthOfLList = length(linkedList)
     quickSortAux(linkedList, 0, lengthOfLList-1)
+    return 1
 
 
 def quickSortAux(linkedList, fromPosition, toPosition):
@@ -24,7 +33,7 @@ def quickSortAux(linkedList, fromPosition, toPosition):
         c = getNode(linkedList, toPosition)
         pivot = None
         pivotPosition = None
-        
+
         if (a.value <= b.value <= c.value) or (c.value <= b.value <= a.value):
             pivot = b
             pivotPosition = int((fromPosition+toPosition)/2)
@@ -34,53 +43,27 @@ def quickSortAux(linkedList, fromPosition, toPosition):
         else:
             pivot = c
             pivotPosition = toPosition
-        
-        # Order 
+
+        # Sorting Part
+        # Move pivot to the beginning of the section of the list
         swapNodes(linkedList, pivotPosition, fromPosition)
-        
-        borderNode = pivot.nextNode
-        borderNodePosition = fromPosition + 1
-        actualNode = borderNode.nextNode
-        
-        for actualNodePosition in range(fromPosition+2, toPosition+1):
+
+        # Define useful counters and nodes
+        borderNode = pivot
+        borderNodePosition = fromPosition
+        actualNode = borderNode
+
+        # Swap the nodes with lower value than the pivot
+        for actualNodePosition in range(fromPosition, toPosition+1):
             if actualNode.value < pivot.value:
-                swapNodes(linkedList, actualNodePosition, borderNodePosition)
                 borderNodePosition += 1
+                swapNodes(linkedList, actualNodePosition, borderNodePosition)
                 actualNode = getNode(linkedList, actualNodePosition)
             actualNode = actualNode.nextNode
-        
+
         # Move the pivot to the correct position
-        
-        borderNode = getNode(linkedList, borderNodePosition)
-        if borderNode.value < pivot.value:
-            swapNodes(linkedList, fromPosition, borderNodePosition)
-        else:
-            moveNode(linkedList, fromPosition, borderNodePosition-1)
-            borderNodePosition -=1
-        
+        swapNodes(linkedList, fromPosition, borderNodePosition)
+
         # Recursive part
         quickSortAux(linkedList, fromPosition, borderNodePosition-1)
         quickSortAux(linkedList, borderNodePosition+1, toPosition)
-
-
-
-LL = LinkedList()
-add(LL, 2)
-add(LL, 0)
-add(LL, 1)
-add(LL, 0)
-add(LL, 1)
-
-def printList(linkedList):
-    print('[', end="")
-    for i in range(0, length(linkedList)):
-        if i != 0:
-            print(', ', end="")
-        print(str(access(linkedList, i)), end="")
-    print(']')
-
-printList(LL)
-    
-quickSort(LL)
-
-printList(LL)
