@@ -2,7 +2,7 @@
 
 from linkedlist import add, access, LinkedList, length
 from quickSort import quickSort
-#from mergeSort import mergeSort
+from mergeSort import mergeSort
 import random  # Only for testing
 
 def printList(linkedList):
@@ -29,11 +29,14 @@ def testSort(sorterFn):
 
     # Sort
     print('\nOrdenando la lista...')
-    sorterFn(listOfNumbers)
+    aux = sorterFn(listOfNumbers)
 
     # Print sorted list
-    printList(listOfNumbers)
+    if aux == 1 :
+        printList(listOfNumbers)
+    else:
+        printList(aux)
 
 # TESTS
 testSort(quickSort)
-#testSort()
+testSort(mergeSort)
