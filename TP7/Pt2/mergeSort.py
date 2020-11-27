@@ -14,12 +14,7 @@ def mergeSort(linkedList):
     # Case empty list
     if not linkedList.head:
         return None
-
-    # Do the mergeSort
-    return mergeSortAux(linkedList)
-
-
-def mergeSortAux(linkedList):
+    
     # Base case
     if not linkedList.head.nextNode:
         return linkedList
@@ -30,14 +25,14 @@ def mergeSortAux(linkedList):
     rightPart = copyLinkedList(linkedList, int(lengthOfLList/2), lengthOfLList)
 
     # Recursively divide and sort the two parts, until base case
-    leftPart = mergeSortAux(leftPart)
-    rightPart = mergeSortAux(rightPart)
+    leftPart = mergeSort(leftPart)
+    rightPart = mergeSort(rightPart)
 
     # Return the merge of the parts
-    return merge(leftPart, rightPart)
+    return mergeSortAux(leftPart, rightPart)
 
 
-def merge(leftPart, rightPart):
+def mergeSortAux(leftPart, rightPart):
     # Create the output List and counter of the q elements
     outputLList = LinkedList()
     outputLListCounter = 0
