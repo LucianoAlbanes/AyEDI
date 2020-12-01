@@ -22,14 +22,12 @@ def search(binaryTree, element):
     Return:
         The key of the node with the given element.
         If the element is found multiple times, returns the first key where appears. (Preorder)
-        Returns 'None' if the element is not in the list.
-    '''
-    # Empty tree case.
-    if not binaryTree.root:
-        return None
-    
-    # Search recursively using aux fn, and return the key.
-    return searchAux(binaryTree.root, element)
+        Returns 'None' if there is no a node with the given element in the binary tree.
+    '''    
+    # Search recursively using aux fn, store pointer and return the key.
+    foundNode = searchAux(binaryTree.root, element)
+    if foundNode:
+        return foundNode.key
 
 def searchAux(actualNode, element):
     # Empty node case.
@@ -38,14 +36,16 @@ def searchAux(actualNode, element):
     
     # Match case.
     if actualNode.value == element:
-        return actualNode.key
+        return actualNode
     
     # Recursive part.
-    # Define key variable and search in both sides.
-    key = searchAux(actualNode.leftnode, element)
-    if not key:
-        key = searchAux(actualNode.rightnode, element)
-    return key
+    # Search in both sides and store the return.
+    foundNode = searchAux(actualNode.leftnode, element)
+    if not foundNode:
+        foundNode = searchAux(actualNode.rightnode, element)
+    
+    # Return the pointer of the node
+    return foundNode
 
 def insert(binaryTree, element, key):
     '''
@@ -105,11 +105,10 @@ def delete(binaryTree, element):
         element: The element of the node of the binary tree to be deleted.
     Return:
         The key of the deleted node.
-        Returns "None" if there is no a node with the given element in the binary tree.
+        Returns 'None' if there is no a node with the given element in the binary tree.
     '''
     # Search the element
     nodeToDelete = searchAux(binaryTree.root, element)
-    print
 
 def deleteAux(actualNode, element):
     return
