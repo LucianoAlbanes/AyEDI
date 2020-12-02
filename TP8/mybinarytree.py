@@ -178,18 +178,27 @@ def checkKeyExistenceAux(actualNode, key):
 
 
 def traverseInPreOrder(binaryTree):
+    '''
+    Explanation: 
+        Create a linked list of the nodes of the binary tree in pre order.
+    Params:
+        binaryTree: The binary tree where are located the nodes to extract.
+    Return:
+        A linked list with the nodes in pre order.
+        Returns 'None' if the tree is empty.
+    '''
     # Empty tree case
     if not binaryTree.root:
         return None
 
-    # Create the linked list to storage the elements.
-    elements = LinkedList()
+    # Create the linked list to storage the pointers.
+    nodesList = LinkedList()
 
-    # Use an aux recursive fn to navigate the tree and store the elements.
-    traverseInPreOrderAux(binaryTree.root, elements)
+    # Use an aux recursive fn to navigate the tree and store the pointers.
+    traverseInPreOrderAux(binaryTree.root, nodesList)
 
     # Return the filled linked list.
-    return elements
+    return nodesList
 
 
 def traverseInPreOrderAux(actualNode, linkedList):
@@ -199,5 +208,5 @@ def traverseInPreOrderAux(actualNode, linkedList):
     if actualNode.leftnode:
         traverseInPreOrderAux(actualNode.leftnode, linkedList)
         
-    # Store element in the linked list
-    add(linkedList, actualNode.value)
+    # Store the pointer in the linked list
+    add(linkedList, actualNode)

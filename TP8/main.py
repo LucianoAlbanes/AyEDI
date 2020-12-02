@@ -1,8 +1,22 @@
 # Some testing for binary tree adt implementation
-from mybinarytree import *
+import random  # Only for testing
+from mybinarytree import BinaryTree, insert, delete, traverseInPreOrder
+from linkedlist import access, length
+
+
+def printList(linkedList):
+    print('[', end="")
+    for i in range(0, length(linkedList)):
+        if i != 0:
+            print(', ', end="")
+        print(str((access(linkedList, i)).key), end="")
+    print(']')
+
 
 # function to print a tree
 COUNT = [10]
+
+
 def printTree(actualNode, space):
     # Base case.
     if not actualNode:
@@ -16,23 +30,35 @@ def printTree(actualNode, space):
 
     # Print current node after space.
     print()
-    for i in range(COUNT[0], space):
+    for _ in range(COUNT[0], space):
         print(end=" ")
     print(actualNode.key)
 
     # Process left child.
     printTree(actualNode.leftnode, space)
 
+
 # TEST CODE
 
+# Create a tree
 tree = BinaryTree()
 
-insert(tree, 'Integral', 100)
-insert(tree, 'Guille', 60)
-insert(tree, 'Humber', 21)
-insert(tree, 'Ale', 19)
-insert(tree, 'Cristian', 22)
-insert(tree, 'Ecogas', 110)
-insert(tree, 'Enargas', 111)
+for i in range(0, 5):
+    key = random.randrange(0, 100)
+    insert(tree, i, key)
+insert(tree, 'LeafR', 101)
+insert(tree, 'LeafL', -1)
+
+print('\n-------------------------\nárbol binario casi aleatorio (?\n-------------------------\n')
 
 printTree(tree.root, 0)
+
+print('\n-------------------------\nEliminando hojas 101 y -1\n-------------------------\n')
+
+delete(tree, 'LeafR')
+delete(tree, 'LeafL')
+printTree(tree.root, 0)
+
+print('\n-------------------------\nImprimiendo keys en pre orden\n-------------------------\n')
+
+printList(traverseInPreOrder(tree))
